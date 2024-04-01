@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Outbox1.DAL;
+using OutboxSimplest.DAL;
 
 #nullable disable
 
-namespace Outbox1.DAL.Migrations
+namespace OutboxSimplest.DAL.Migrations
 {
     [DbContext(typeof(OutboxContext))]
-    [Migration("20240328132239_Init")]
+    [Migration("20240328154656_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace Outbox1.DAL.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Outbox1.DAL.OutgoingMessage", b =>
+            modelBuilder.Entity("OutboxSimplest.DAL.OutgoingMessage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,12 +34,6 @@ namespace Outbox1.DAL.Migrations
 
                     b.Property<bool>("Sended")
                         .HasColumnType("boolean");
-
-                    b.Property<uint>("Version")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("xid")
-                        .HasColumnName("xmin");
 
                     b.HasKey("Id");
 

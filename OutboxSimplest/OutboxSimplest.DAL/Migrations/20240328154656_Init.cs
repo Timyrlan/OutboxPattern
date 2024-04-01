@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Outbox1.DAL.Migrations
+namespace OutboxSimplest.DAL.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration
@@ -17,8 +17,7 @@ namespace Outbox1.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Sended = table.Column<bool>(type: "boolean", nullable: false),
-                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
+                    Sended = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
